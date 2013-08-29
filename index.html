@@ -11,6 +11,7 @@
   <![endif]-->
   <style>
     body { margin:0; padding:0; height: 100%; width: 100%; bottom: 0px; position: absolute;}
+    /*h2,h3 {margin:0;}*/
     #map { position:absolute; top:0; bottom:0; width:100%; height: 300px; }
     #layerButtons {
     	overflow: auto;
@@ -311,6 +312,21 @@ var layers = {
 		'obj': null 
 	}, 
 };
+
+var markerJSON = {
+	type: 'Feature',
+	geometry: {
+		type:'Point',
+		coordinates: ''
+	}
+}
+
+var icon = L.mapbox.marker.icon({
+	'marker-size': 'small',
+	'marker-color': '#48a',
+	'marker-symbol': 'parking'
+})
+
 var map = L.mapbox.map('map', 'gmgcoders.map-s5kpz88c');
 L.mapbox.tileLayer('gmgcoders.shade').addTo(map);
 $.each(layers, function(name, val) {
@@ -331,7 +347,11 @@ map.fitBounds([l['sw'], l['ne']]);
 $('#storyList span').each(function(i, v){
 	var lat = parseFloat(v.getAttribute('lat')),
 		lng = parseFloat(v.getAttribute('lng'));
-	if (lat && lng)	L.marker([lat, lng]).addTo(map);
+	if (lat && lng)	L.marker([lat, lng], {icon: icon}).addTo(map).on('click', function(e){
+		$('#storyListContainer').animate({
+			scrollTop: $('#storyListContainer').scrollTop() + $(v).position().top
+		}, 500);
+	}.bind());
 })
 
 $('#storyList div').each(function(i, v){
@@ -348,8 +368,12 @@ $('#storyList div').each(function(i, v){
 		var sw = [Math.min.apply(Math, lats), Math.min.apply(Math, lngs)];
 		var ne = [Math.max.apply(Math, lats), Math.max.apply(Math, lngs)];
 		console.log(sw, ne)
-		map.fitBounds([sw, ne]);
-	}, {context: '#storyListContainer', offset: '0%'});
+		map.fitBounds([sw, ne], {animate: true});
+	}, {
+		context: '#storyListContainer',
+		offset: '0%',
+		continuous: false
+	});
 })
 
 // $.each(['dayOne', 'dayTwo', 'dayThree', 'dayFour', 'dayFive'], function(index, value){
