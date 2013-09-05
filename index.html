@@ -9,6 +9,7 @@
   <script type="text/javascript" src="ext/js/jquery.colorbox-min.js"></script>
   <link href='ext/css/mapbox-1.3.1.css' rel='stylesheet' />
   <link rel="stylesheet" href="ext/css/colorbox.css" type="text/css" media="screen" />
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <!-- <link rel="stylesheet" href="ext/css/colorbox-1.0.0.css" type="text/css" media="screen" /> -->
   <!--[if lte IE 8]>
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
@@ -19,27 +20,44 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="ext/bootstrap/js/bootstrap.js"></script>
-
   <style>
     body { margin:0; padding:0; height: 100%; width: 100%; bottom: 0px; position: absolute;}
+    h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6 {
+		font-family: 'Montserrat', Arial, serif;
+		font-weight: 400;
+		line-height: 1.1;
+	}
     h2 {
     	margin-top: 0;
     }
-    #masthead {
-    	background: #ffc100; /* Old browsers */
-		background: -moz-linear-gradient(top, #ffc100 0%, #ff9900 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc100), color-stop(100%,#ff9900)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ffc100 0%,#ff9900 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ffc100 0%,#ff9900 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, #ffc100 0%,#ff9900 100%); /* IE10+ */
-		background: linear-gradient(to bottom, #ffc100 0%,#ff9900 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc100', endColorstr='#ff9900',GradientType=0 ); /* IE6-9 */
+    .navbar {
+    	margin-bottom: 0;
     }
-    .navbar-brand {
-    	padding: 0;
+    .navbar-toggle {
+    	margin-left: 15px;
+    	float: left;
+    	display: block !important;
     }
-    .navbar-brand img {
-    	height: 50px;
+    .nav-tabs {
+    	border: none;
+    }
+    .visualContainer {
+    	background-color: #101010;
+    	z-index: 100;
+    }
+    #storyListContainer {
+    	margin-top: 450px;
     }
     #storyList h2.stuck {
     	position: fixed;
@@ -61,56 +79,160 @@
     }
     #map, #mapContainer {
     	background-color: white;
-    	height: 300px;
+    	height: 350px;
     	padding: 0;
     	z-index: 100;
     }
-    #mapContainer.stuck {
+    .stuck {
     	position: fixed;
     	top: 0;
     }
-    .my-div-icon {
-    	width: 10px;
-    	height: 10px;
-    	border-radius: 100%;
-    	background-color: #990000;
-    	box-shadow: 1px 1px 2px #666;
+    #map-footer	{
+    	background-color: #101010;
+    	height: 50px;
+    	width: 100%;
+    	font-family: 'Montserrat', Arial, serif;
+		font-weight: 400;
     }
+    .viewport {
+	  position: fixed;
+	  height: 450px;
+	  top: 0;
+	  right: 0;
+	  /*bottom: 0;*/
+	  left: 0;
+	  overflow: hidden;
+	  z-index: 100;
+	}
+	 
+	.viewport .frame {
+	  position: absolute;
+	  width: 200%;
+	  top: 0;
+	  /*bottom: 0;*/
+	  left: 0;
+	  right: 0;
+	}
+	.view {
+	  width: 50%;
+	  height: 100%;
+	  overflow: hidden;
+	}
+	.view .shade {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: black;
+		opacity: .75;
+		display: none;
+		z-index: 600;
+	}
+
+    .menu {
+	  height:100%;
+	  z-index: 500;
+	  float: left;
+	  float:left;
+	  height: 100%;
+	  width: auto;
+	  font-family: 'Montserrat', Arial, serif;
+	  font-weight: 400;
+	  font-size: 18px;
+	}
+	.menu.collapse {
+	}
+	.menu.height {
+	  position: relative;
+	  height: 0;
+	  overflow: hidden;
+	  -webkit-transition: height 0.35s ease;
+	  -moz-transition: height 0.35s ease;
+	  -o-transition: height 0.35s ease;
+	  transition: height 0.35s ease;
+	}
+	 
+	.menu.width {
+	  position: relative;
+	  width: 0;
+	  overflow: hidden;
+	  -webkit-transition: width 0.35s ease;
+	  -moz-transition: width 0.35s ease;
+	  -o-transition: width 0.35s ease;
+	  transition: width 0.35s ease;
+	}
+	 
+	.menu.in.width {
+	  width: 250px !important;
+	}
+	 
+	.menu.in.height {
+	  height: auto;
+	}
+	 
+	.menu .collapse-inner {
+	  position: relative;
+	  width: 250px;
+	  height: 100%;
+	}
+
+	.menu li a {
+		border-radius: 0 4px 4px 0;
+	}
+	.popovers {
+		display: none;
+	}
+	a.anchor{display: block; position: relative; top: -450px; visibility: hidden;}
+	.my-div-icon {
+		background-color: #990000;
+		border-radius: 100%;
+		height: 10px;
+		width: 10px;
+	}
   </style>
 </head>
-<body>
-	<div class="container">
-		<!-- <div id="masthead" class="condensed">
-			<img src="http://media.lasvegassun.com/media/assets/images/global/mini-masthead.png">
-		</div> -->
-		<nav class="navbar navbar-default" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand" href="#"><img src="http://media.lasvegassun.com/media/assets/images/global/interior_logo.png"></a>
-		  </div>
+<body data-spy="scroll" data-target="#map-footer" data-offset="450">
 
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse navbar-ex1-collapse">
-		    <ul class="nav navbar-nav">
-		      <li class="active"><a href="#">Nevada Heartland</a></li>
-		      <li><a href="#">Kit Carson Trail</a></li>
-		      <li><a href="#">Viva Las Vegas</a></li>
-		      <li><a href="#">Pony Express</a></li>
-		      <li><a href="#">Emigrant Trail</a></li>
-		    </ul>
-		  </div><!-- /.navbar-collapse -->
-		</nav>
-		<div id="mapContainer" class="jumbotron">
+	<div class="viewport navbar-inverse"> <!-- .navbar-inverse for styling -->
+      <div class="frame">
+        <div class="menu nav-collapse collapse width">
+        	<ul class="collapse-inner nav nav-tabs nav-stacked">
+			  <li class="active"><a href="#">Nevada Heartland</a></li>
+			  <li><a href="#">Kit Carson Trail</a></li>
+			  <li><a href="#">Viva Las Vegas</a></li>
+			  <li><a href="#">Pony Express</a></li>
+			  <li><a href="#">Emigrant Trail</a></li>
+			</ul>
+        </div>
+        <div class="view">
+        	<div class="shade"></div>
+        	<nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+				<button id="nav-slider-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>  
+			</nav>
+
 			<div id='map'></div>
-		</div>
+			
+			<nav id="map-footer" class="navbar navbar-default navbar-inverse" role="navigation">
+				<ul class="nav navbar-nav">
+		        	<li class="active"><a href="#dayOne">Day 1</a></li>
+		        	<li><a href="#dayTwo">Day 2</a></li>
+		        	<li><a href="#dayTwo">Day 3</a></li>
+		        	<li><a href="#dayTwo">Day 4</a></li>
+		        	<li><a href="#dayTwo">Day 5</a></li>
+		    	</ul>
+			</nav>
+        </div>
+      </div>
+    </div>
+
+	<div id="storyListContainer" class="container">
 		<section id="storyList" class="col-xs-12 col-md-8">
-			<article id="dayOne">
+			<article>
+				<a class="anchor" id="dayOne"></a>
 				<h2>Day 1</h2>
 				<span lat="36.20" lng="-114.98">
 					<h3 storyID="foo"><a href="ajax_sample.html">Title</a></h3>
@@ -158,7 +280,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</span> -->
 			</article>
-			<article id="dayTwo">
+			<article>
+				<a class="anchor" id="dayTwo"></a>
 				<h2>Day 2</h2>
 				<span lat="37.57" lng="-115.62">
 					<h3>Title</h3>
@@ -206,7 +329,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</span>
 			</article>
-			<article id="dayThree">
+			<article>
+				<a class="anchor" id="dayThree"></a>
 				<h2>Day 3</h2>
 				<span>
 					<h3>Title</h3>
@@ -254,7 +378,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</span>
 			</article>
-			<article id="dayFour">
+			<article>
+				<a class="anchor" id="dayFour"></a>
 				<h2>Day 4</h2>
 				<span>
 					<h3>Title</h3>
@@ -302,7 +427,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</span>
 			</article>
-			<article id="dayFive">
+			<article>
+				<a class="anchor" id="dayFive"></a>
 				<h2>Day 5</h2>
 				<span>
 					<h3>Title</h3>
@@ -353,7 +479,12 @@
 		</section>
 	</div>
 
-
+	<div class="popovers">
+		<div class="menu-help">
+			<p>This is the menu!</p>
+			<button type="button" class="btn btn-primary" onclick="menuHelp()">Got it!</button>
+		</div>
+	</div>
 
 <script type='text/javascript'>
 
@@ -375,6 +506,18 @@ function panMapTo (dayDiv) {
 		$.isNumeric(ne[0]) && $.isNumeric(ne[1])) {
 		map.fitBounds([sw, ne], {animate: true});
 	}
+}
+
+function menuHelp(state){
+	if (state) {
+		$('.view .shade').fadeIn();
+		$('.menu').collapse('show').on('shown.bs.collapse', function(){
+			$('.menu').popover('show').off('shown.bs.collapse');
+		});
+	} else{
+		$('.menu').collapse('hide').popover('hide');
+		$('.view .shade').fadeOut();
+	};
 }
 
 var layers = {
@@ -441,6 +584,18 @@ var icon = L.mapbox.marker.icon({
 
 var myIcon = L.divIcon({className: 'my-div-icon'});
 
+$('.menu').popover({
+	html:true,
+	content:function(){return $('.menu-help').html()},
+	trigger:'manual'
+});
+$(document).ready(function() {
+	if ( document.referrer == null || document.referrer.indexOf(window.location.hostname) < 0 ) {
+		menuHelp(true);
+	}
+});
+
+
 // Initialize lightboxes
 $('h3').each(function(i, v){
 	if (v.hasAttribute('storyID')) {
@@ -466,7 +621,7 @@ $('#storyList span').each(function(i, v){
 	var lat = parseFloat(v.getAttribute('lat')),
 		lng = parseFloat(v.getAttribute('lng'));
 	if (lat && lng)	L.marker([lat, lng], {icon: myIcon}).addTo(map).on('click', function(e){
-		var dayDiv = $(v).parents("[id^='day']");
+		var dayDiv = $(v).parents("[id^='day']").parent();
 		if (!mapLock) {mapLock++; panMapTo(dayDiv);};
 		$('body').animate({
 			scrollTop: $(v).position().top + 30
@@ -475,19 +630,19 @@ $('#storyList span').each(function(i, v){
 });
 
 // Setup waypoints
-$('#mapContainer').waypoint('sticky');
+// $('#mapContainer').waypoint('sticky');
 $('#storyList article').each(function(i, v){
 	$(v).waypoint(function(){
 		if (!mapLock) {mapLock++; panMapTo(v); mapLock--;};
 	}, {
 		// context: '#storyListContainer',
-		offset: '300px'
+		offset: '450px'
 	});
 });
-$('#storyList article h2').waypoint('sticky', {
-	// context: '#storyListContainer',
-	offset: '300px'
-});
+// $('#storyList article h2').waypoint('sticky', {
+// 	// context: '#storyListContainer',
+// 	offset: '300px'
+// });
 
 </script>
 </body>
