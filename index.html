@@ -1,1057 +1,546 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-  <script src='ext/js/mapbox-1.3.1.js'></script>
-  <script type="text/javascript" src="ext/js/leaflet.markercluster.js"></script>
-  <script type="text/javascript" src="ext/js/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="ext/js/waypoints.min.js"></script>
-  <script type="text/javascript" src="ext/js/waypoints-sticky.min.js"></script>
-  <script type="text/javascript" src="ext/js/jquery.colorbox-min.js"></script>
-  <link href='ext/css/mapbox-1.3.1.css' rel='stylesheet' />
-  <link rel="stylesheet" href="ext/css/colorbox.css" type="text/css" media="screen" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <!-- <link rel="stylesheet" href="ext/css/colorbox-1.0.0.css" type="text/css" media="screen" /> -->
-  <!--[if lte IE 8]>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src='ext/js/mapbox-1.3.1.js'></script>
+    <script type="text/javascript" src="ext/js/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="ext/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="ext/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="ext/js/waypoints-sticky.min.js"></script>
+    <script type="text/javascript" src="ext/js/jquery.colorbox-min.js"></script>
+    <link href='ext/css/mapbox-1.3.1.css' rel='stylesheet' />
+    <link rel="stylesheet" href="ext/css/colorbox.css" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="ext/css/colorbox-1.0.0.css" type="text/css" media="screen" /> -->
+    <!--[if lte IE 8]>
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
   <![endif]-->
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="ext/bootstrap/css/bootstrap.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="ext/bootstrap/css/bootstrap.css">
+    <link href='ext/css/styles.css' rel='stylesheet' />
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="ext/bootstrap/js/bootstrap.js"></script>
-  <style>
-    body {
-    	margin:0;
-    	padding:0;
-    	height: 100%;
-    	width: 100%;
-    	bottom: 0px;
-    	overflow:auto;
-    	background-color: #dbd7cf;
-    }
-    h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	.h1,
-	.h2,
-	.h3,
-	.h4,
-	.h5,
-	.h6 {
-		font-family: 'Open Sans', Arial, serif;
-		font-weight: 400;
-		line-height: 1.1;
-	}
-    h2 {
-    	margin-top: 0;
-    }
-    .navbar {
-    	margin-bottom: 0;
-    	border: none;
-    	border-top: 1px solid #FF720B;
-    }
-    .navbar-inverse {
-    	background-color: #101010;
-    }
-    .navbar-toggle {
-    	margin-left: 15px;
-    	float: left;
-    	display: block !important;
-    }
-    .nav-tabs {
-    	border: none;
-    }
-    .nav-tabs li a {
-    	color: #b1b1b1  !important;
-    	border: none !important;
-    }
-    .nav-tabs li.active a {
-    	color: white !important;
-    	border: none !important;
-    }
-    .nav-tabs li.active a {
-    	border: none !important;
-    }
-    .nav-tabs li a:hover {
-    	color: white !important;
-    	border: none !important;
-    }
-    .navbar .logo {
-    	margin-top: 2px;
-    }
-    .visualContainer {
-    	background-color: #101010;
-    	z-index: 100;
-    }
-    #storyListContainer {
-    	margin-top: 376px;
-    }
-    #storyList h1 {
-    	font-weight: 300;
-    	margin-top: 30px;
-    }
-    #storyList .tripTease {
-    	font-style: italic;
-    }
-    #storyList article {
-    	overflow: hidden;
-    }
-    #storyList .page-header {
-    	width: 100%;
-    	float: left;
-    }
-    #storyList h2 {
-    	font-family: 'Open Sans', Arial, serif;
-		font-weight: 400;
-		font-size: 24px;
-    }
-    #storyList h2 .day {
-    	vertical-align: 1px;
-    	font-weight: 300;
-    	text-transform: uppercase;
-    }
-    #storyList h2 .date {
-    	font-weight: 500;
-    	font-size: 30px;
-    	text-transform: uppercase;
-    }
-    #storyList h3 {
-    	margin-top: 0;
-    }
-    .contentItem {
-    	margin-bottom: 30px;
-    	float: left;
-    }
-    .contentItem h3 a {
-    	color: black;
-    	text-transform: uppercase;
-    }
-    .jumbotron {
-    	margin: 0;
-    	padding: 0;
-    }
-    #map, #mapContainer {
-    	background-color: white;
-    	height: 300px;
-    	padding: 0;
-    	z-index: 100;
-    }
-    .mapStats, .mapLegend {
-    	font-family: 'Open Sans', Arial, serif;
-		font-weight: 400;
-		font-size: 15px;
-		text-transform: uppercase;
-    	padding: 15px 30px;
-    	position: absolute;
-    	bottom: 25px;
-    	right: 0px;
-    	background-color: rgba(16,16,16,0.8);
-    	color: #999;
-    	z-index: 500;
-    	width: 205px;
-    	display: block;
-    }
-    .mapStats {
-    	color: white;
-    	font-size: 14px;
-    	top: 51px;
-    	bottom: none;
-    	background-color: #101010;
-    	height: 150px;
-    	padding: 10px;
-    }
-    .mapStats > span {
-    	padding: 3px 0;
-    }
-    .mapStats .mmLocation {
-    	display: block;
-    	text-align: center;
-    	letter-spacing: 1px;
-    }
-    .mapStats .mmCity {
-    	display: block;
-		text-align: center;
-		font-size: 24px;
-		font-weight: 300;
-		letter-spacing: 1px;
-		border-top: 1px solid #1f1f1f;
-		border-bottom: 1px solid #1f1f1f;
-    }
-    .mapStats .mmStats {
-    	display: block;
-    	overflow: auto;
-    	padding-left: 24px;
-    }
-    .mapStats .mmStats .mmStatGroup {
-    	float:left;
-    }
-    .mapStats .mmStats .mmStatGroup span {
-    	display: block;
-    	text-align: center;
-    }
-    .mapStats .mmStats .label {
-    	text-transform: uppercase;
-    	font-size: 8px;
-    	font-weight: 300;
-    }
-    .mapStats .mmStats .dial {
-    	font-size: 18px;
-    	font-weight: 400;
-    	line-height: 1;
-    	letter-spacing: 2px;
-    	margin: 0 5px;
-    	padding: 0;
-    	padding-left: 1px;
-    	border-bottom: 1px solid #333;
-    	background: #000000; /* Old browsers */
-		background: -moz-linear-gradient(top, #000000 0%, #4c4c4c 39%, #000000 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(39%,#4c4c4c), color-stop(100%,#000000)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #000000 0%,#4c4c4c 39%,#000000 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #000000 0%,#4c4c4c 39%,#000000 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top, #000000 0%,#4c4c4c 39%,#000000 100%); /* IE10+ */
-		background: linear-gradient(to bottom, #000000 0%,#4c4c4c 39%,#000000 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-    }
-    .mapLegend > span {
-    	display: block;
-    	margin-left: 7px;
-    	margin-bottom: 3px;
-    }
-    .mapLegend .sprites {
-    	float: left;
-    	margin-right: 5px;
-    }
-    .stuck {
-    	position: fixed;
-    	top: 0;
-    }
-    #map-footer	{
-    	color: #FF720B;
-    	background-color: #101010;
-    	border-radius: 0 !important;
-    	min-height: 0;
-    	width: 100%;
-    	font-family: 'Open Sans', Arial, serif;
-		font-weight: 400;
-    }
-    #map-footer .navbar-nav {
-    	margin: 0 !important;
-    	float: left !important;
-    }
-    #map-footer .navbar-nav li {
-    	float: left;
-    }
-    #map-footer a {
-    	font-size: 15px;
-    	padding: 2px 25px;
-    	text-transform: uppercase;
-    	color: #b1b1b1;
-    }
-    #map-footer li.active a {
-    	color: #FF720B;
-    }
-    .viewport {
-	  position: fixed;
-	  height: 376px;
-	  top: 0;
-	  right: 0;
-	  /*bottom: 0;*/
-	  left: 0;
-	  overflow: hidden;
-	  z-index: 100;
-	  -webkit-transform: translateZ(0);
-	}
-	 
-	.viewport .frame {
-	  position: absolute;
-	  width: 200%;
-	  top: 0;
-	  /*bottom: 0;*/
-	  left: 0;
-	  right: 0;
-	}
-	.view {
-	  width: 50%;
-	  height: 100%;
-	  overflow: hidden;
-	  position: relative;
-	}
-	.shade {
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		background-color: black;
-		opacity: .75;
-		display: none;
-		z-index: 600;
-	}
-
-    .menu {
-	  height:100%;
-	  z-index: 500;
-	  float: left;
-	  height: 100%;
-	  width: auto;
-	  font-family: 'Open Sans', Arial, serif;
-	  font-weight: 400;
-	  font-size: 18px;
-	}
-	.menu.height {
-	  position: relative;
-	  height: 0;
-	  overflow: hidden;
-	  -webkit-transition: height 0.35s ease;
-	  -moz-transition: height 0.35s ease;
-	  -o-transition: height 0.35s ease;
-	  transition: height 0.35s ease;
-	}
-	 
-	.menu.width {
-	  position: relative;
-	  width: 0;
-	  overflow: hidden;
-	  -webkit-transition: width 0.35s ease;
-	  -moz-transition: width 0.35s ease;
-	  -o-transition: width 0.35s ease;
-	  transition: width 0.35s ease;
-	}
-	 
-	.menu.in.width {
-	  width: 250px !important;
-	}
-	 
-	.menu.in.height {
-	  height: auto;
-	}
-	 
-	.menu .collapse-inner {
-	  position: relative;
-	  width: 250px;
-	  height: 100%;
-	}
-
-	.menu li a {
-		border-radius: 0 4px 4px 0;
-	}
-	.menu li {
-		border-left: solid 2px;
-	}
-	.menu li.t1 {
-		border-color: #FF720B;
-	}
-	.menu li.active.t1 a, .menu li.t1 a:hover {
-		background-color: #FF720B !important;
-	}
-	.menu li.t2 {
-		border-color: #9efa01;
-	}
-	.menu li.active.t2 a, .menu li.t2 a:hover {
-		background-color: #9efa01 !important;
-	}
-	.menu li.t3 {
-		border-color: #e62a8e;
-	}
-	.menu li.active.t3 a, .menu li.t3 a:hover {
-		background-color: #e62a8e !important;
-	}
-	.menu li.t4 {
-		border-color: #ffd004;
-	}
-	.menu li.active.t4 a, .menu li.t4 a:hover {
-		background-color: #ffd004 !important;
-	}
-	.menu li.t5 {
-		border-color: #ff2200;
-	}
-	.menu li.active.t5 a, .menu li.t5 a:hover {
-		background-color: #ff2200 !important;
-	}
-	.menu li.t6 {
-		border-color: #00bcff;
-	}
-	.menu li.active.t6 a, .menu li.t6 a:hover {
-		background-color: #00bcff !important;
-	}
-	.menu li.t7 {
-		border-color: #e13cf5;
-	}
-	.menu li.active.t7 a, .menu li.t7 a:hover {
-		background-color: #e13cf5 !important;
-	}
-	.menu li.t8 {
-		border-color: #FF720B;
-	}
-	.menu li.active.t8 a, .menu li.t8 a:hover {
-		background-color: #FF720B !important;
-	}
-
-	.popovers {
-		display: none;
-	}
-	a.anchor{display: block; position: relative; top: -376px; visibility: hidden;}
-	.my-div-icon {
-		/*border: 1px solid white;
-		border-radius: 100%;
-		height: 20px;
-		width: 20px;*/
-	}
-	.t1 .my-div-icon {
-		background-color: #FF720B;
-	}
-	.t2 .my-div-icon {
-		background-color: #9efa01;
-	}
-	.t3 .my-div-icon {
-		background-color: #e62a8e;
-	}
-	.t4 .my-div-icon {
-		background-color: #ffd004;
-	}
-	.t5 .my-div-icon {
-		background-color: #ff2200;
-	}
-	.t6 .my-div-icon {
-		background-color: #00bcff;
-	}
-	.t7 .my-div-icon {
-		background-color: #e13cf5;
-	}
-	#rightRailAd {
-		width: 300px;
-		height: 250px;
-		margin-top: 60px;
-		background-color: #666;
-	}
-	.sprites { background-image: url(ext/img/icons/icon-sprite.png); background-color: transparent; background-repeat: no-repeat; display:block;}
-	.icon-almanac-20 { width: 20px; height: 18px; background-position: 0 0; }
-	.icon-almanac-34 { width: 34px; height: 30px; background-position: -56px -68px; }
-	.icon-postcard-20 { width: 20px; height: 19px; background-position: 0 -19px; }
-	.icon-postcard-34 { width: 34px; height: 33px; background-position: -56px -34px; }
-	.icon-sketchbook-20 { width: 20px; height: 24px; background-position: 0 -39px; }
-	.icon-sketchbook-34 { width: 34px; height: 42px; background-position: -21px -21px; }
-	.icon-travelogue-20 { width: 20px; height: 20px; background-position: -21px 0; }
-	.icon-travelogue-34 { width: 34px; height: 34px; background-position: -21px -64px; }
-	.icon-video-20 { width: 20px; height: 19px; background-position: 0 -64px; }
-	.icon-video-34 { width: 34px; height: 33px; background-position: -56px 0; }
-
-	/*LEAFLET CLUSTER STYLES*/
-	.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
-		-webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.2s ease-in;
-		-moz-transition: -moz-transform 0.2s ease-out, opacity 0.2s ease-in;
-		-o-transition: -o-transform 0.2s ease-out, opacity 0.2s ease-in;
-		transition: transform 0.2s ease-out, opacity 0.2s ease-in;
-	}
-	.marker-cluster-small {
-		background-color: rgba(181, 226, 140, 0.6);
-		}
-	.marker-cluster-small div {
-		background-color: rgba(110, 204, 57, 0.6);
-		}
-
-	.marker-cluster-medium {
-		background-color: rgba(241, 211, 87, 0.6);
-		}
-	.marker-cluster-medium div {
-		background-color: rgba(240, 194, 12, 0.6);
-		}
-
-	.marker-cluster-large {
-		background-color: rgba(253, 156, 115, 0.6);
-		}
-	.marker-cluster-large div {
-		background-color: rgba(241, 128, 23, 0.6);
-		}
-
-	.marker-cluster {
-		background-clip: padding-box;
-		border-radius: 20px;
-		}
-	.marker-cluster div {
-		width: 30px;
-		height: 30px;
-		margin-left: 5px;
-		margin-top: 5px;
-
-		text-align: center;
-		border-radius: 15px;
-		font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-		}
-	.marker-cluster span {
-		line-height: 30px;
-		}
-
-  </style>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="ext/bootstrap/js/bootstrap.js"></script>
 </head>
+
 <body class="t1" data-spy="scroll" data-target="#map-footer" data-offset="0">
-	<div class="shade"></div>
-	<div class="viewport navbar-inverse"> <!-- .navbar-inverse for styling -->
-      <div class="frame">
-        <div class="menu nav-collapse collapse width">
-        	<ul class="collapse-inner nav nav-tabs nav-stacked">
-			  <li class="t1 active"><a href="#">Nevada Heartland</a></li>
-			  <li class="t2"><a href="#">Kit Carson Trail</a></li>
-			  <li class="t3"><a href="#">Viva Las Vegas</a></li>
-			  <li class="t4"><a href="#">Pony Express</a></li>
-			  <li class="t5"><a href="#">Emigrant Trail</a></li>
-			  <li class="t6"><a href="#">Trip 6</a></li>
-			  <li class="t7"><a href="#">Trip 7</a></li>
-			  <li class="t8"><a href="#">Trip 8</a></li>
-			</ul>
+    <div class="shade"></div>
+    <div class="viewport navbar-inverse">
+        <!-- .navbar-inverse for styling -->
+        <div class="frame">
+            <div class="menu nav-collapse collapse width">
+                <ul class="collapse-inner nav nav-tabs nav-stacked">
+                    <li class="t1 active"><a href="#">Nevada Heartland</a>
+                    </li>
+                    <li class="t2"><a href="#">Off the Beaten Path</a>
+                    </li>
+                    <li class="t3"><a href="#">Kit Carson Trail</a>
+                    </li>
+                    <li class="t4"><a href="#">Pony Express</a>
+                    </li>
+                    <li class="t5"><a href="#">Emigrant Trail</a>
+                    </li>
+                    <li class="t6"><a href="#">Only in Nevada</a>
+                    </li>
+                    <li class="t7"><a href="#">A Nevada Celebration</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="view">
+                <div class="shade"></div>
+                <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+                    <button id="nav-slider-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="logo" src="ext/img/findingnev50.png" alt="Finding Nevada">
+                </nav>
+
+                <div id='map' class="dark"></div>
+
+                <div class="mapStats hidden-xs">
+                    <span class="mmLocation">Matt &amp; Mike's
+                        <br />Current Location</span>
+                    <span class="mmCity">Carson City</span>
+                    <span class="mmStats">
+                        <span class="mmStatGroup day">
+                            <span class="label">Day</span>
+                            <span class="dial">5</span>
+                        </span>
+                        <span class="mmStatGroup odo">
+                            <span class="label">Odometer</span>
+                            <span class="dial">252</span>
+                        </span>
+                        <span class="mmStatGroup miles">
+                            <span class="label">Miles to Date</span>
+                            <span class="dial">1321</span>
+                        </span>
+                    </span>
+                </div>
+
+                <div class="mapLegend hidden-xs">
+                    <span>
+                        <span class="sprites icon-travelogue-15"></span>Travelogue</span>
+                    <span>
+                        <span class="sprites icon-travelogue-15"></span>Blog</span>
+                    <span>
+                        <span class="sprites icon-almanac-15"></span>Almanac</span>
+                    <span>
+                        <span class="sprites icon-postcard-15"></span>Postcard</span>
+                    <span>
+                        <span class="sprites icon-sketchbook-15"></span>Sketchbook</span>
+                    <span>
+                        <span class="sprites icon-video-15"></span>Video</span>
+                </div>
+
+                <nav id="map-footer" class="navbar navbar-default navbar-inverse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="day-label">DAY:</li>
+                        <li class="active"><a href="#dayOne">1</a>
+                        </li>
+                        <li><a href="#dayTwo">2</a>
+                        </li>
+                        <li><a href="#dayThree">3</a>
+                        </li>
+                        <li><a href="#dayFour">4</a>
+                        </li>
+                        <li><a href="#dayFive">5</a>
+                        </li>
+                        <li><a class="disabled" href="#daySix">6</a>
+                        </li>
+                        <li><a class="disabled" href="#daySeven">7</a>
+                        </li>
+                        <li><a class="disabled" href="#dayEight">8</a>
+                        </li>
+                        <li><a class="disabled" href="#dayNine">9</a>
+                        </li>
+                        <li><a class="disabled" href="#dayTen">10</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <div class="view">
-        	<div class="shade"></div>
-        	<nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
-				<button id="nav-slider-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu">
-			      <span class="sr-only">Toggle navigation</span>
-			      <span class="icon-bar"></span>
-			      <span class="icon-bar"></span>
-			      <span class="icon-bar"></span>
-			    </button> 
-			    <img class="logo" src="ext/img/findingnev50.png" alt="Finding Nevada">
-			</nav>
-
-			<div id='map' class="dark"></div>
-
-			<div class="mapStats hidden-xs">
-				<span class="mmLocation">Matt &amp; Mike's<br />Current Location</span>
-				<span class="mmCity">Carson City</span>
-				<span class="mmStats">
-					<span class="mmStatGroup day">
-						<span class="label">Day</span>
-						<span class="dial">5</span>
-					</span>
-					<span class="mmStatGroup odo">
-						<span class="label">Odometer</span>
-						<span class="dial">252</span>
-					</span>
-					<span class="mmStatGroup miles">
-						<span class="label">Miles to Date</span>
-						<span class="dial">1321</span>
-					</span>
-				</span>
-			</div>
-
-			<div class="mapLegend hidden-xs">
-				<span><span class="sprites icon-travelogue-20"></span>Travelogue</span>
-				<span><span class="sprites icon-almanac-20"></span>Almanac</span>
-				<span><span class="sprites icon-postcard-20"></span>Postcard</span>
-				<span><span class="sprites icon-sketchbook-20"></span>Sketchbook</span>
-				<span><span class="sprites icon-video-20"></span>Video</span>
-			</div>
-			
-			<nav id="map-footer" class="navbar navbar-default navbar-inverse" role="navigation">
-				<ul class="nav navbar-nav">
-		        	<li class="active"><a href="#dayOne">Day 1</a></li>
-		        	<li><a href="#dayTwo">Day 2</a></li>
-		        	<li><a href="#dayThree">Day 3</a></li>
-		        	<li><a href="#dayFour">Day 4</a></li>
-		        	<li><a href="#dayFive">Day 5</a></li>
-		    	</ul>
-			</nav>
-        </div>
-      </div>
     </div>
     <!-- Collection finding-nevada-t1d1 - 6914 -->
-	<div id="storyListContainer" class="container">
-		<section id="storyList" class="col-xs-12 col-md-8">
-			<h1>Nevada Heartland</h1>
-			<p class="tripTease">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<article>
-				<a class="anchor" id="dayOne"></a>
-				<div class="page-header">
-					<h2><span class="day">Day 1 - </span><span class="date">Sunday Sept 15</span></h2>
-				</div>
-				<div class="contentItem row" lat="36.20" lng="-114.98" data-contenttype="almanac">
-					<div class="col-xs-1">
-						<span class="contentItemIcon sprites icon-travelogue-34"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Beginning the Journey</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="36.43" lng="-114.420" data-contenttype="video">
-					<div class="col-xs-1">
-						<span class="contentItemIcon sprites icon-video-34"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Car is on fire</a></h3>
-						<div class="row">
-							<div class="col-xs-12">
-								<img class="img-responsive" src="ext/img/sample-thumbnail.jpg"></img>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="contentItem row" lat="36.73" lng="-114.70" data-contenttype="sketchbook">
-					<div class="col-xs-1">
-						<span class="contentItemIcon sprites icon-sketchbook-34"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Now Mike is on fire</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="37.09" lng="-114.96" data-contenttype="travelogue">
-					<div class="col-xs-1">
-						<span class="contentItemIcon sprites icon-travelogue-34"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Comin' home</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<a class="anchor" id="dayTwo"></a>
-				<div class="page-header">
-					<h2><span class="day">Day 2 - </span><span class="date">Monday Sept 16</span></h2>
-				</div>
-				<div class="contentItem row" lat="37.57" lng="-115.62">
-					<div class="col-xs-1">
-						<span class="contentItemIcon"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Another day walking alone</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="37.79" lng="-115.96">
-					<div class="col-xs-1">
-						<span class="contentItemIcon"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Still on this lonely highway</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="38.23" lng="-116.18">
-					<div class="col-xs-1">
-						<span class="contentItemIcon"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">Now I'm sitting</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="38.72" lng="-116.18">
-					<div class="col-xs-1">
-						<span class="contentItemIcon"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">What's it mean to sit?</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-				<div class="contentItem row" lat="38.09" lng="-117.07">
-					<div class="col-xs-1">
-						<span class="contentItemIcon"></span>
-					</div>
-					<div class="col-xs-11">
-						<h3 storyID="foo"><a href="ajax_sample.html">RUN!</a></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-				</div>
-			</article>
-			<article>
-				<a class="anchor" id="dayThree"></a>
-				<h2>Day 3</h2>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-			</article>
-			<article>
-				<a class="anchor" id="dayFour"></a>
-				<h2>Day 4</h2>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-			</article>
-			<article>
-				<a class="anchor" id="dayFive"></a>
-				<h2>Day 5</h2>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-				<span>
-					<h3>Title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</span>
-			</article>
-		</section>
-		<div class="col-md-4">
-			<div id="rightRailAd"></div>
-		</div>
-	</div>
+    <div id="storyListContainer" class="container">
+        <section id="storyList" class="col-xs-12 col-md-8">
+            <h1>Nevada Heartland</h1>
+            <p class="tripTease">From the Old West to the nuclear age, we'll cover Nevada's heartland in central and southern Nevada.</p>
+            <article>
+                <a class="anchor" id="dayOne"></a>
+                <div class="page-header">
+                    <h2>
+                        <span class="day">Day 1 -</span>
+                        <span class="date">Sunday Sept 15</span>
+                    </h2>
+                </div>
+                <div class="contentItem row" lat="36.20" lng="-114.98" data-contenttype="almanac">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon sprites icon-travelogue-34"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Beginning the Journey</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="36.43" lng="-114.420" data-contenttype="video">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon sprites icon-video-34"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Car is on fire</a>
+                        </h3>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <img class="img-responsive" src="ext/img/sample-thumbnail.jpg"></img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="36.73" lng="-114.70" data-contenttype="sketchbook">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon sprites icon-sketchbook-34"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Now Mike is on fire</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="37.09" lng="-114.96" data-contenttype="travelogue">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon sprites icon-travelogue-34"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Comin' home</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <a class="anchor" id="dayTwo"></a>
+                <div class="page-header">
+                    <h2>
+                        <span class="day">Day 2 -</span>
+                        <span class="date">Monday Sept 16</span>
+                    </h2>
+                </div>
+                <div class="contentItem row" lat="37.57" lng="-115.62">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Another day walking alone</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="37.79" lng="-115.96">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Still on this lonely highway</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="38.23" lng="-116.18">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">Now I'm sitting</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="38.72" lng="-116.18">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">What's it mean to sit?</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="contentItem row" lat="38.09" lng="-117.07">
+                    <div class="col-xs-1">
+                        <span class="contentItemIcon"></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <h3 storyID="foo"><a href="ajax_sample.html">RUN!</a>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <a class="anchor" id="dayThree"></a>
+                <h2>Day 3</h2>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+            </article>
+            <article>
+                <a class="anchor" id="dayFour"></a>
+                <h2>Day 4</h2>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+            </article>
+            <article>
+                <a class="anchor" id="dayFive"></a>
+                <h2>Day 5</h2>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+                <span>
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </span>
+            </article>
+        </section>
+        <div class="col-md-4">
+            <div id="rightRailAd"></div>
+        </div>
+    </div>
 
-	<div class="popovers">
-		<div class="menu-help">
-			<p>With the approaching 150th birthday of Nevada's statehood, the Sun has dispatched Matt Hufman and Mike Smith from the newsroom to explore, define and explain our state. Over the course of seven extensive road trips, they will be writing, taking photos and videos and sketching the fascinating people and places -- obvious and obscure -- that distinguish the Silver State. Join them in finding Nevada.</p>
-			<button type="button" class="btn btn-primary" onclick="menuHelp(false)">Got it!</button>
-		</div>
-	</div>
+    <div class="popovers">
+        <div class="menu-help">
+            <p>With the approaching 150th birthday of Nevada's statehood, the Sun has dispatched Matt Hufman and Mike Smith from the newsroom to explore, define and explain our state.</p>
+            <p>Over the course of seven extensive road trips, they will be writing, taking photos and videos and sketching the fascinating people and places -- obvious and obscure -- that distinguish the Silver State. Join them in finding Nevada.</p>
+            <button type="button" class="btn btn-primary" onclick="menuHelp(false)">Got it!</button>
+        </div>
+    </div>
 
-<script type='text/javascript'>
+    <script type='text/javascript'>
+    var mapLock = 0,
+        scrollLock = false;
 
-var mapLock = 0,
-	scrollLock = false;
+    function panMapTo(dayDiv) {
+        var lats = [],
+            lngs = [];
+        $('.contentItem', dayDiv).each(function(i, v) {
+            var lat = parseFloat(v.getAttribute('lat')),
+                lng = parseFloat(v.getAttribute('lng'));
+            lats.push(lat);
+            lngs.push(lng);
+        });
+        var sw = [Math.min.apply(Math, lats), Math.min.apply(Math, lngs)];
+        var ne = [Math.max.apply(Math, lats), Math.max.apply(Math, lngs)];
+        if ($.isNumeric(sw[0]) && $.isNumeric(sw[1]) &&
+            $.isNumeric(ne[0]) && $.isNumeric(ne[1])) {
+            map.fitBounds([sw, ne], {
+                animate: true
+            });
+        }
+    }
 
-function panMapTo (dayDiv) {
-	var lats = [],
-		lngs = [];
-	$('.contentItem', dayDiv).each(function(i, v){
-		var lat = parseFloat(v.getAttribute('lat')),
-			lng = parseFloat(v.getAttribute('lng'));
-		lats.push(lat);
-		lngs.push(lng);
-	});
-	var sw = [Math.min.apply(Math, lats), Math.min.apply(Math, lngs)];
-	var ne = [Math.max.apply(Math, lats), Math.max.apply(Math, lngs)];
-	if ($.isNumeric(sw[0]) && $.isNumeric(sw[1]) &&
-		$.isNumeric(ne[0]) && $.isNumeric(ne[1])) {
-		map.fitBounds([sw, ne], {animate: true});
-	}
-}
+    function menuHelp(state) {
+        if (state) {
+            $('.shade').fadeIn();
+            $('.menu').collapse('show').on('shown.bs.collapse', function() {
+                $('.menu').popover('show').off('shown.bs.collapse');
+            });
+            $('#nav-slider-button').css({
+                'box-shadow': '0 0 10px 1px #FF720B'
+            });
+            $('.shade').click(function(event) {
+                menuHelp(false);
+            });
+            $(document).scroll(function(event) {
+                menuHelp(false);
+            });
 
-function menuHelp(state){
-	if (state) {
-		$('.shade').fadeIn();
-		$('.menu').collapse('show').on('shown.bs.collapse', function(){
-			$('.menu').popover('show').off('shown.bs.collapse');
-		});
-		$('#nav-slider-button').css({'box-shadow': '0 0 10px 1px #FF720B'});
-		$('.shade').click(function(event) {
-			menuHelp(false);
-		});
-		$(document).scroll(function(event) {
-			menuHelp(false);
-		});
+        } else {
+            $('.menu').collapse('hide').popover('hide');
+            $('.shade').fadeOut();
+            $('#nav-slider-button').css({
+                'box-shadow': ''
+            });
+        };
+    }
 
-	} else{
-		$('.menu').collapse('hide').popover('hide');
-		$('.shade').fadeOut();
-		$('#nav-slider-button').css({'box-shadow': ''});
-	};
-}
+    var layers = {
+        'one': {
+            'sw': [35.84, -117.50],
+            'ne': [38.77, -114.17],
+            'obj': null,
+            'layerName': 'red'
+        },
+        'two': {
+            'sw': [35.98, -119.82],
+            'ne': [41.13, -114.24],
+            'obj': null,
+            'layerName': 'green'
+        },
+        'three': {
+            'sw': [35.041, -115.60],
+            'ne': [36.483, -114.36],
+            'obj': null,
+            'layerName': 'purple'
+        },
+        'four': {
+            'sw': [35.84, -117.50],
+            'ne': [39.64, -114.22],
+            'obj': null,
+            'layerName': 'blue'
+        },
+        'five': {
+            'sw': [35.98, -119.82],
+            'ne': [41.97, -113.91],
+            'obj': null,
+            'layerName': 'orange'
+        },
+    };
 
-var layers = {
-	'one': {
-		'sw': [35.84, -117.50],
-		'ne': [38.77, -114.17],
-		'obj': null,
-		'layerName': 'red'
-	},
-	'two': {
-		'sw': [35.98, -119.82],
-		'ne': [41.13, -114.24],
-		'obj': null,
-		'layerName': 'green'
-	},
-	'three': {
-		'sw': [35.041, -115.60],
-		'ne': [36.483, -114.36],
-		'obj': null,
-		'layerName': 'purple'
-	},
-	'four': {
-		'sw': [35.84, -117.50],
-		'ne': [39.64, -114.22],
-		'obj': null,
-		'layerName': 'blue'
-	},
-	'five': {
-		'sw': [35.98, -119.82],
-		'ne': [41.97, -113.91],
-		'obj': null,
-		'layerName': 'orange'
-	}, 
-};
-
-// var markerJSON = {
-// 	type: 'Feature',
-// 	geometry: {
-// 		type:'Point',
-// 		coordinates: ''
-// 	}
-// }
+    // var markerJSON = {
+    // 	type: 'Feature',
+    // 	geometry: {
+    // 		type:'Point',
+    // 		coordinates: ''
+    // 	}
+    // }
 
 
-// Initialize map
-var map = L.mapbox.map(
-	'map',
-	'gmgcoders.map-s5kpz88c',
-	{scrollWheelZoom: false}
-).on(
-	'movestart',
-	function(){mapLock++;}
-).on(
-	'moveend',
-	function(){mapLock--;}
-);
+    // Initialize map
+    var map = L.mapbox.map(
+        'map',
+        'gmgcoders.map-s5kpz88c', {
+            scrollWheelZoom: false
+        }
+    ).on(
+        'movestart',
+        function() {
+            mapLock++;
+        }
+    ).on(
+        'moveend',
+        function() {
+            mapLock--;
+        }
+    );
 
-// Initialize helpers
-var icon = L.mapbox.marker.icon({
-	'marker-size': 'small',
-	'marker-color': '#48a',
-	'marker-symbol': 'parking'
-});
+    // Initialize helpers
+    var icon = L.mapbox.marker.icon({
+        'marker-size': 'small',
+        'marker-color': '#48a',
+        'marker-symbol': 'parking'
+    });
 
-$('.menu').popover({
-	html:true,
-	content:function(){return $('.menu-help').html()},
-	trigger:'manual'
-});
-$(document).ready(function() {
-	if ( document.referrer == null || document.referrer.indexOf(window.location.hostname) < 0 ) {
-		menuHelp(true);
-	}
-});
-$('#map-footer li a').on('click', function(e){
-	e.preventDefault();
-	var a = $($(e.target).attr('href'));
-	if (!mapLock) {mapLock++; panMapTo(a.parent()); mapLock--};
-	$('body').animate({
-		'scrollTop': a.position().top + $('.viewport').height()
-	})
-	$($(e.target).attr('href')).scrollTop();
-})
+    $('.menu').popover({
+        html: true,
+        content: function() {
+            return $('.menu-help').html()
+        },
+        trigger: 'manual'
+    });
+    $(document).ready(function() {
+        if (document.referrer == null || document.referrer.indexOf(window.location.hostname) < 0) {
+            // menuHelp(true);
+        }
+    });
+    $('#map-footer li a').on('click', function(e) {
+        e.preventDefault();
+        var a = $($(e.target).attr('href'));
+        if (!mapLock) {
+            mapLock++;
+            panMapTo(a.parent());
+            mapLock--
+        };
+        $('body').animate({
+            'scrollTop': a.position().top + $('.viewport').height()
+        })
+        $($(e.target).attr('href')).scrollTop();
+    })
 
 
-// Initialize lightboxes
-$('h3').each(function(i, v){
-	if (v.hasAttribute('storyID')) {
-		$(v).find('a').colorbox({
-			// inline:true,
-			// href:"#" + v.getAttribute('storyID'),
-			width: '90%',
-			height: '90%'
-		});
-	};
-})
+    // Initialize lightboxes
+    $('h3').each(function(i, v) {
+        if (v.hasAttribute('storyID')) {
+            $(v).find('a').colorbox({
+                // inline:true,
+                // href:"#" + v.getAttribute('storyID'),
+                width: '90%',
+                height: '90%'
+            });
+        };
+    })
 
-// Initialize layers
-L.mapbox.tileLayer('gmgcoders.shade').addTo(map);
-$.each(layers, function(name, val) {
-	layers[name]['obj'] = L.mapbox.tileLayer('gmgcoders.' + val['layerName']);
-});
-(l = layers['one'])['obj'].addTo(map);
-map.fitBounds([l['sw'], l['ne']]);
+    // Initialize layers
+    L.mapbox.tileLayer('gmgcoders.shade').addTo(map);
+    $.each(layers, function(name, val) {
+        layers[name]['obj'] = L.mapbox.tileLayer('gmgcoders.' + val['layerName']);
+    });
+    (l = layers['one'])['obj'].addTo(map);
+    map.fitBounds([l['sw'], l['ne']]);
 
-// Parse data & place pins
-var markers = new L.MarkerClusterGroup();
-$('#storyList .contentItem').each(function(i, v){
-	var lat = parseFloat(v.getAttribute('lat')),
-		lng = parseFloat(v.getAttribute('lng'));
-	if (lat && lng)	markers.addLayer(L.marker([lat, lng], {
-		icon: new L.Icon({
-			// className: 'my-div-icon sprites icon-' + $(v).attr('data-contenttype') + '-20',
-			iconUrl: 'ext/img/icons/pin-' + $(v).attr('data-contenttype') + '.png',
-			iconSize: [45,68],
-			anchorPoint: [22, 68]
-		})
-	}).on('click', function(e){
-		var dayDiv = $(v).parent();
-		if (!mapLock) {mapLock++; panMapTo(dayDiv);};
-		$('body').animate({
-			scrollTop: $(v).position().top - 20
-		}, duration=500, complete=function(){mapLock--});
-	}.bind()));
-});
-map.addLayer(markers);
-panMapTo($('#storyList'));
+    // Parse data & place pins
+    var markers = new L.MarkerClusterGroup();
+    $('#storyList .contentItem').each(function(i, v) {
+        var lat = parseFloat(v.getAttribute('lat')),
+            lng = parseFloat(v.getAttribute('lng'));
+        if (lat && lng) markers.addLayer(L.marker([lat, lng], {
+            icon: new L.Icon({
+                // className: 'my-div-icon sprites icon-' + $(v).attr('data-contenttype') + '-20',
+                iconUrl: 'ext/img/icons/pin-' + $(v).attr('data-contenttype') + '.png',
+                iconSize: [45, 68],
+                anchorPoint: [22, 68]
+            })
+        }).on('click', function(e) {
+            var dayDiv = $(v).parent();
+            if (!mapLock) {
+                mapLock++;
+                panMapTo(dayDiv);
+            };
+            $('body').animate({
+                scrollTop: $(v).position().top - 20
+            }, duration = 500, complete = function() {
+                mapLock--
+            });
+        }.bind()));
+    });
+    map.addLayer(markers);
+    panMapTo($('#storyList'));
 
-// Setup waypoints
-// $('#mapContainer').waypoint('sticky');
-$('#storyList').waypoint(function(){
-	panMapTo(this);
-}, {
-	offset: '370px'
-})
-$('#storyList article').each(function(i, v){
-	$($(v).find('.anchor')).waypoint(function(){
-		if (!mapLock) {mapLock++; panMapTo(v); mapLock--;};
-	}, {
-		// offset: '-1px'
-	});
-});
-// $('#storyList article h2').waypoint('sticky', {
-// 	// context: '#storyListContainer',
-// 	offset: '300px'
-// });
-
-</script>
+    // Setup waypoints
+    // $('#mapContainer').waypoint('sticky');
+    $('#storyList').waypoint(function() {
+        panMapTo(this);
+    }, {
+        offset: '370px'
+    })
+    $('#storyList article').each(function(i, v) {
+        $($(v).find('.anchor')).waypoint(function() {
+            if (!mapLock) {
+                mapLock++;
+                panMapTo(v);
+                mapLock--;
+            };
+        }, {
+            // offset: '-1px'
+        });
+    });
+    // $('#storyList article h2').waypoint('sticky', {
+    // 	// context: '#storyListContainer',
+    // 	offset: '300px'
+    // });
+    </script>
 </body>
+
 </html>

@@ -8,6 +8,22 @@
 		{
 			"follow_symlinks": true,
 			"path": "/home/brutimus/Work/dev/html/lvsun/templates"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/brutimus/Work/dev/html/lvsun/assets"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/brutimus/Work/dev/html/lvsun-mobile"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/brutimus/Work/dev/code/django91"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/brutimus/Work/dev/code/ellington"
 		}
 	]
 }

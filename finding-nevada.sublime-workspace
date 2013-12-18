@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"function"
+			],
+			[
+				"last",
+				"lastItem"
+			],
+			[
+				"resume",
+				"resumeEl"
+			],
+			[
+				"ac",
+				"activeLayerName"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"contentItem",
+				"contentItemIcon"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"geo",
+				"geocode_cities"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"menu",
+				"menuHelp"
+			],
+			[
+				"dis",
+				"disable_scroll"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"day",
+				"dayDiv"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"ready",
+				"ready	$(document).ready"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
 				"each",
 				"each	.each()"
 			],
@@ -20,10 +100,34 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "test-changes/Finding Nevada - Off the Beaten Path - Las Vegas Sun News.html",
 			"settings":
 			{
-				"buffer_size": 18385,
+				"buffer_size": 54081,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/brutimus/Work/dev/html/lvsun/templates/taxonomy/features/finding-nevada/landing.html",
+			"settings":
+			{
+				"buffer_size": 43720,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ext/css/styles.css",
+			"settings":
+			{
+				"buffer_size": 12878,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/brutimus/Work/dev/html/lvsun/assets/finding-nevada/css/styles.css",
+			"settings":
+			{
+				"buffer_size": 13215,
 				"line_ending": "Unix"
 			}
 		}
@@ -35,12 +139,72 @@
 		"selected_items":
 		[
 			[
-				"wrap",
-				"HTML: Wrap Selection With Tag"
+				"commit",
+				"SVN: (File) Commit"
+			],
+			[
+				"comit",
+				"SVN: Commit…"
+			],
+			[
+				"comi",
+				"SVN: (File) Commit"
+			],
+			[
+				"commi",
+				"SVN: (File) Commit"
+			],
+			[
+				"status",
+				"SVN: (File) Status"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"update",
+				"SVN: (File) Update"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"upda",
+				"SVN: (File) Update"
+			],
+			[
+				"log",
+				"SVN: (File) Log"
+			],
+			[
+				"add",
+				"SVN: (File) Add"
+			],
+			[
+				"conver",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"lint",
+				"CSSLint: Run CSSLint"
+			],
+			[
+				"svn commit",
+				"SVN: (File) Commit"
+			],
+			[
+				"svn add",
+				"SVN: (File) Add"
+			],
+			[
+				"svn up",
+				"SVN: Update"
+			],
+			[
+				"wrap",
+				"HTML: Wrap Selection With Tag"
 			]
 		],
 		"width": 575.0
@@ -50,6 +214,7 @@
 		"height": 139.0,
 		"history":
 		[
+			"help",
 			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
 		]
 	},
@@ -64,15 +229,134 @@
 	},
 	"file_history":
 	[
-		"/home/brutimus/Code/year/Gruntfile.js",
-		"/home/brutimus/Code/year/app/scripts/app.js",
-		"/home/brutimus/Code/year/app/bower_components/animated-responsive-image-grid/.bower.json",
-		"/home/brutimus/Code/year/bower.json",
-		"/home/brutimus/Code/year/app/bower_components/mapbox.js/package.json",
-		"/home/brutimus/Code/year/app/scripts/main.js",
-		"/home/brutimus/Downloads/mapbox/sample.html",
-		"/home/brutimus/Downloads/FindingNevada (1).kml",
-		"/home/brutimus/Downloads/FindingNevada.kml"
+		"/tmp/sublime-svn-1382401549/SVN",
+		"/tmp/sublime-svn-1382401292/SVN",
+		"/tmp/sublime-svn-1382399831/SVN",
+		"/tmp/sublime-svn-1382399720/SVN",
+		"/tmp/sublime-svn-1382399681/SVN",
+		"/home/brutimus/Work/dev/html/lvsun/assets/css/finding-nevada/styles.css",
+		"/tmp/sublime-svn-1382398976/SVN",
+		"/home/brutimus/Work/dev/code/ellington/release/ellington/collections/models/collections.py",
+		"/home/brutimus/Work/dev/html/lvsun/templates/taxonomy/features/finding-nevada/core.html",
+		"/tmp/sublime-svn-1382396431/SVN",
+		"/tmp/sublime-svn-1382396265/SVN",
+		"/tmp/sublime-svn-1382393703/SVN",
+		"/tmp/sublime-svn-1382393695/SVN",
+		"/tmp/sublime-svn-1382393655/SVN",
+		"/tmp/sublime-svn-1382393517/SVN",
+		"/tmp/sublime-svn-1382393479/SVN",
+		"/tmp/sublime-svn-1382388622/SVN",
+		"/tmp/sublime-svn-1382388327/SVN",
+		"/tmp/sublime-svn-1382388246/SVN",
+		"/tmp/sublime-svn-1382388157/SVN",
+		"/tmp/sublime-svn-1382388132/SVN",
+		"/tmp/sublime-svn-1382386083/SVN",
+		"/tmp/sublime-svn-1381951132/SVN",
+		"/tmp/sublime-svn-1381951069/SVN",
+		"/tmp/sublime-svn-1381950944/SVN",
+		"/tmp/sublime-svn-1381950582/SVN",
+		"/tmp/sublime-svn-1381950125/SVN",
+		"/tmp/sublime-svn-1381949725/SVN",
+		"/tmp/sublime-svn-1381949120/SVN",
+		"/tmp/sublime-svn-1381948879/SVN",
+		"/tmp/sublime-svn-1381948670/SVN",
+		"/tmp/sublime-svn-1381948434/SVN",
+		"/tmp/sublime-svn-1381948081/SVN",
+		"/tmp/sublime-svn-1381947956/SVN",
+		"/tmp/sublime-svn-1381947675/SVN",
+		"/tmp/sublime-svn-1381947355/SVN",
+		"/home/brutimus/Work/dev/html/lvsun/templates/flatpages/finding-nevada.html",
+		"/home/brutimus/Work/dev/html/lvsun/templates/news/framing/finding-nevada.html",
+		"/tmp/sublime-svn-1381945150/SVN",
+		"/tmp/sublime-svn-1381944462/SVN",
+		"/tmp/sublime-svn-1381944360/SVN",
+		"/tmp/sublime-svn-1381944156/SVN",
+		"/tmp/sublime-svn-1381944065/SVN",
+		"/tmp/sublime-svn-1381943673/SVN",
+		"/tmp/sublime-svn-1381942751/SVN",
+		"/tmp/sublime-svn-1381942591/SVN",
+		"/tmp/sublime-svn-1381942430/SVN",
+		"/tmp/sublime-svn-1381942267/SVN",
+		"/tmp/sublime-svn-1381942056/SVN",
+		"/home/brutimus/Work/dev/html/lvsun/templates/core.html",
+		"/home/brutimus/Work/dev/html/lvsun/assets/finding-nevada/css/styles.css",
+		"/home/brutimus/Work/dev/html/lvsun/templates/taxonomy/features/finding-nevada/landing.html",
+		"/tmp/sublime-svn-1380126729/SVN",
+		"/tmp/sublime-svn-1380126540/SVN",
+		"/tmp/sublime-svn-1379649216/SVN",
+		"/tmp/sublime-svn-1379648570/SVN",
+		"/home/brutimus/Work/dev/code/ellington/release/ellington/core/templatetags/future.py",
+		"/tmp/sublime-svn-1379468601/SVN",
+		"/tmp/sublime-svn-1379449902/SVN",
+		"/tmp/sublime-svn-1379449668/SVN",
+		"/tmp/sublime-svn-1379449214/SVN",
+		"/tmp/sublime-svn-1379448771/SVN",
+		"/tmp/sublime-svn-1379448737/SVN",
+		"/tmp/sublime-svn-1379448667/SVN",
+		"/tmp/sublime-svn-1379448635/SVN",
+		"/home/brutimus/Work/dev/html/lvsun/templates/news/base_news.html",
+		"/tmp/sublime-svn-1379448551/SVN",
+		"/tmp/sublime-svn-1379448207/SVN",
+		"/tmp/sublime-svn-1379448160/SVN",
+		"/tmp/sublime-svn-1379447475/SVN",
+		"/tmp/sublime-svn-1379446943/SVN",
+		"/tmp/sublime-svn-1379446932/SVN",
+		"/tmp/sublime-svn-1379446485/SVN",
+		"/tmp/sublime-svn-1379446415/SVN",
+		"/tmp/sublime-svn-1379446348/SVN",
+		"/tmp/sublime-svn-1379446289/SVN",
+		"/tmp/sublime-svn-1379446196/SVN",
+		"/tmp/sublime-svn-1379446076/SVN",
+		"/tmp/sublime-svn-1379445999/SVN",
+		"/tmp/sublime-svn-1379445158/SVN",
+		"/tmp/sublime-svn-1379444695/SVN",
+		"/tmp/sublime-svn-1379444514/SVN",
+		"/tmp/sublime-svn-1379444446/SVN",
+		"/tmp/sublime-svn-1379444408/SVN",
+		"/tmp/sublime-svn-1379444239/SVN",
+		"/tmp/sublime-svn-1379444190/SVN",
+		"/tmp/sublime-svn-1379444017/SVN",
+		"/tmp/sublime-svn-1379443773/SVN",
+		"/tmp/sublime-svn-1379440059/SVN",
+		"/tmp/sublime-svn-1379440033/SVN",
+		"/tmp/sublime-svn-1379439865/SVN",
+		"/tmp/sublime-svn-1379383300/SVN",
+		"/home/brutimus/Work/dev/code/ellington/release/ellington/media/models/photogalleries.py",
+		"/tmp/sublime-svn-1379270272/SVN",
+		"/tmp/sublime-svn-1379209292/SVN",
+		"/tmp/sublime-svn-1379204144/SVN",
+		"/tmp/sublime-svn-1379185678/SVN",
+		"/tmp/sublime-svn-1379136405/SVN",
+		"/tmp/sublime-svn-1379134629/SVN",
+		"/tmp/sublime-svn-1379134463/SVN",
+		"/tmp/sublime-svn-1379134058/SVN",
+		"/tmp/sublime-svn-1379134010/SVN",
+		"/tmp/sublime-svn-1379133859/SVN",
+		"/tmp/sublime-svn-1379132858/SVN",
+		"/tmp/sublime-svn-1379132292/SVN",
+		"/tmp/sublime-svn-1379132206/SVN",
+		"/tmp/sublime-svn-1379132101/SVN",
+		"/tmp/sublime-svn-1379132023/SVN",
+		"/tmp/sublime-svn-1379131661/SVN",
+		"/tmp/sublime-svn-1379130971/SVN",
+		"/tmp/sublime-svn-1379130844/SVN",
+		"/tmp/sublime-svn-1379130727/SVN",
+		"/tmp/sublime-svn-1379130447/SVN",
+		"/tmp/sublime-svn-1379130095/SVN",
+		"/tmp/sublime-svn-1379129983/SVN",
+		"/tmp/sublime-svn-1379123240/SVN",
+		"/tmp/sublime-svn-1379122771/SVN",
+		"/home/brutimus/Work/dev/code/django91/django/contrib/auth/rights.py",
+		"/home/brutimus/Work/dev/code/ellington/release/ellington/news/models/news.py",
+		"/tmp/sublime-svn-1379121206/SVN",
+		"/tmp/sublime-svn-1379121013/SVN",
+		"/tmp/sublime-svn-1379120883/SVN",
+		"/tmp/sublime-svn-1379120747/SVN",
+		"/tmp/sublime-svn-1379120525/SVN",
+		"/tmp/sublime-svn-1379120453/SVN",
+		"/tmp/sublime-svn-1379120443/SVN",
+		"/tmp/sublime-svn-1379120434/SVN",
+		"/tmp/sublime-svn-1379120303/SVN"
 	],
 	"find":
 	{
@@ -80,9 +364,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"",
+			"django91",
+			""
 		]
 	},
 	"find_state":
@@ -90,6 +377,58 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"scrollTop",
+			"body",
+			"'{{ flatpage.content }}'",
+			".menu",
+			"bottom",
+			"Type commit message here…",
+			"FF720B",
+			"color",
+			"http://asset.lasvegassun.com/media/projects/",
+			"ASSETS_URL",
+			"stoops",
+			".modal-dialog",
+			"nameplate",
+			"\n{% ifequal flatpage.content \"1\" %}\n{% get_collection \"finding-nevada-t1\" as trip %}\n{% endifequal %}",
+			"sketchbook",
+			"tag",
+			"tagging",
+			"tags",
+			"fragment",
+			"dayTwo",
+			"tag",
+			"related",
+			"get_locations_list",
+			"get_location",
+			"collection",
+			"collections",
+			"endif",
+			"get_loca",
+			"related",
+			"location",
+			"related_location",
+			"fragments",
+			"get_fragment",
+			"get_collection",
+			"{{ ASSETS_URL }}finding-nevada",
+			"mapbox",
+			"icon",
+			".shade",
+			"class=\"contentItem\"",
+			"</span>",
+			"span class=\"contentItem\"",
+			"contentIt",
+			"span lat",
+			"font-family",
+			"menuHelp",
+			"font-family",
+			"console.log",
+			"div",
+			"base_condensed",
+			"base_wide",
+			"base_generic",
+			"base_condensed",
 			"LIVERE",
 			"grid-gutter",
 			"50",
@@ -108,6 +447,16 @@
 		"regex": false,
 		"replace_history":
 		[
+			".nav .dropdown-menu",
+			"{{ ASSETS_URL }}",
+			"sketchpad",
+			"http://stoops-dev.s3-us-west-1.amazonaws.com/finding-nevada/ext",
+			"class=\"contentItem row\"",
+			"</div>",
+			"</div",
+			"div class=\"contentItem\"",
+			"span class=\"contentItem\" lat",
+			"article",
 			"/thumbs/"
 		],
 		"reverse": false,
@@ -119,33 +468,121 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
-					"semi_transient": true,
+					"file": "test-changes/Finding Nevada - Off the Beaten Path - Las Vegas Sun News.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18385,
+						"buffer_size": 54081,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1874,
+								1874
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/brutimus/Work/dev/html/lvsun/templates/taxonomy/features/finding-nevada/landing.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43685,
+								43685
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4572.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ext/css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12878,
+								12878
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2852.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/brutimus/Work/dev/html/lvsun/assets/finding-nevada/css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3151,
+								3151
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2238.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -184,6 +621,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.csslint_result_view":
+	{
+		"height": 112.0
+	},
 	"project": "finding-nevada.sublime-project",
 	"replace":
 	{
@@ -195,6 +636,162 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"styles",
+				"assets/finding-nevada/css/styles.css"
+			],
+			[
+				"styles.css",
+				"assets/css/finding-nevada/styles.css"
+			],
+			[
+				"colle",
+				"ellington/release/ellington/collections/models/collections.py"
+			],
+			[
+				"finding",
+				"templates/flatpages/finding-nevada.html"
+			],
+			[
+				"taxonfindi",
+				"templates/taxonomy/features/finding-nevada/core.html"
+			],
+			[
+				"",
+				"ellington/release/ellington/core/templatetags/future.py"
+			],
+			[
+				"modelgaller",
+				"ellington/release/ellington/media/models/photogalleries.py"
+			],
+			[
+				"flatpagefinding",
+				"templates/flatpages/finding-nevada.html"
+			],
+			[
+				"future",
+				"ellington/release/ellington/core/templatetags/future.py"
+			],
+			[
+				"framingfinding",
+				"templates/news/framing/finding-nevada.html"
+			],
+			[
+				"core",
+				"templates/core.html"
+			],
+			[
+				"authrights",
+				"django91/django/contrib/auth/rights.py"
+			],
+			[
+				"modelnew",
+				"ellington/release/ellington/news/models/news.py"
+			],
+			[
+				"storydetail",
+				"templates/news/story_detail.html"
+			],
+			[
+				"storyon",
+				"templates/news/framing/story-only.html"
+			],
+			[
+				"smart",
+				"ellington/release/ellington/core/templatetags/smartif.py"
+			],
+			[
+				"galleries/embed",
+				"templates/galleries/embed.html"
+			],
+			[
+				"mediaview",
+				"ellington/release/ellington/media/views/photogalleries.py"
+			],
+			[
+				"modelcollec",
+				"ellington/release/ellington/collections/models/collections.py"
+			],
+			[
+				"modelnews",
+				"ellington/release/ellington/news/models/news.py"
+			],
+			[
+				"livefy",
+				"templates/comments/livefyre_comments.html"
+			],
+			[
+				"commit",
+				"templates/feedpages/comments_title.html"
+			],
+			[
+				"ecard",
+				"ellington/release/ellington/ecards/models/ecards.py"
+			],
+			[
+				"tag",
+				"ellington/release/ellington/tagging/models/tagging.py"
+			],
+			[
+				"mediamodel",
+				"ellington/release/ellington/media/models/photogalleries.py"
+			],
+			[
+				"modelme",
+				"ellington/release/ellington/media/models/media.py"
+			],
+			[
+				"newsmode",
+				"ellington/release/ellington/news/models/news.py"
+			],
+			[
+				"story_mark",
+				"templates/news/common/story_markup.html"
+			],
+			[
+				"colorbox",
+				"assets/css/colorbox.css"
+			],
+			[
+				"geocode_place",
+				"ellington/release/ellington/places/bin/geocode_places.py"
+			],
+			[
+				"geocode",
+				"ellington/release/ellington/core/utils/geocoder.py"
+			],
+			[
+				"modelplace",
+				"ellington/release/ellington/places/models/places.py"
+			],
+			[
+				"placesmode",
+				"ellington/release/ellington/places/models/places.py"
+			],
+			[
+				"collection",
+				"ellington/release/ellington/collections/models/collections.py"
+			],
+			[
+				"debug",
+				"ellington/release/ellington/core/templatetags/debug.py"
+			],
+			[
+				"related_location",
+				"templates/includes/related_location_map.html"
+			],
+			[
+				"story",
+				"templates/news/common/story_markup.html"
+			],
+			[
+				"fin",
+				"templates/flatpages/finding-nevada.html"
+			],
+			[
+				"bootst",
+				"finding-nevada/ext/bootstrap/css/bootstrap.css"
+			]
 		],
 		"width": 0.0
 	},
@@ -208,11 +805,11 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 557.0
 	},
 	"settings":
 	{
@@ -221,7 +818,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 270.0,
+	"side_bar_width": 204.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
